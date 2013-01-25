@@ -108,7 +108,7 @@ DependencyDetection.defer do
   end
   
   executes do
-    if defined?(::Rails) && ::Rails::VERSION::MAJOR.to_i == 3
+    if NewRelic::Agent.config[:framework] == :rails3
       Rails.configuration.after_initialize do
         insert_instrumentation
       end
